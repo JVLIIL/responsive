@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>APP</title>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo"> <h3> Jaliil </h3> </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link">
+                            <img src="media/home.svg" alt="" class="nav__icon" style="width: 40px ;height: 40px;">
+                            <span class="nav__name">Home</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">
+                            <img src="media/about.svg" alt="" class="nav__icon" style="width: 40px ;height: 40px;">
+                            <span class="nav__name">About</span>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            <img src="media/contact.svg" alt="" class="nav__icon"  style="width: 40px ;height: 40px;">
+                            <span class="nav__name">Contact</span>
+                        </a>
+
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#setting" class="nav__link">
+                            <img src="media/setting.svg" alt="" class="nav__icon" style="width: 40px ;height: 40px;">
+                            <span class="nav__name">Setting</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <img src="media/portrait.png" alt="" class="nav__img">
+        </nav>
+    </header>
+
+    <main>
+
+        <!--======== HOME ==========-->
+        <section class="container section section__height" id="home">
+            <h2 class="section__title">Home</h2>
+        </section> 
+
+        <!--======== ABOUT ==========-->
+        <section class="container section section__height" id="about">
+            <h2 class="section__title">About</h2>
+        </section>
+
+        <!--======== Contact ==========-->
+        <section class="container section section__height" id="contact">
+            <h2 class="section__title">Contact</h2>
+        </section>
+
+        <!--======== Setting ==========-->
+        <section class="container section section__height" id="setting">
+            <h2 class="section__title">Setting</h2>
+        </section>
+
+    </main>
+
+</body>
+<script>
+    const sections = document.querySelectorAll('section[id]')
+
+    function scrollActive(){
+        const scrollY = window.pageYOffset
+
+        sections.forEach(current =>{
+            const sectionHeight = current.offsetHeight,
+                sectionTop = current.offsetTop - 50,
+                sectionId = current.getAttribute('id')
+
+            if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                document.querySelector('.nav__item a[href*=' + sectionId + ']').classList.add('active-link')
+            }else{
+                document.querySelector('.nav__item a[href*=' + sectionId + ']').classList.remove('active-link')
+            }
+        })
+    }   
+    window.addEventListener('scroll', scrollActive)
+
+    function scroolHeader(){
+        const header = document.getElementById('header')
+
+        if(this.scrollY >= 80 ){
+            header.classList.add('scroll-header');
+        }
+             
+         else {
+            header.classList.remove('scroll-header')
+        }
+    }
+
+    window.addEventListener('scroll', scroolHeader)
+    
+</script>
+</html>
